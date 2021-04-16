@@ -33,12 +33,8 @@ const Dashboard: React.FC = () => {
             return;
         }
         try {
-
-            const { data } = await Repository.findByName(newRepo);
-
-            const repository = data
-
-            setRepositories( [ ...repositories, repository ] );
+            const { data } = await Repository.load(newRepo);
+            setRepositories([ ...repositories, data ])
             setNewRepo('');
             setInputError('');
 
@@ -48,7 +44,11 @@ const Dashboard: React.FC = () => {
     }
 
     useEffect(() => {
-        localStorage.setItem('@GithubExplore:repositories', JSON.stringify(repositories))
+        if ( repositories ) {
+            localStorage.setItem('@GithubExplore:repositories', JSON.stringify(repositories))
+        }
+
+
     }, [repositories]);
 
     return (

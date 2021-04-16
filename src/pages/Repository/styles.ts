@@ -30,6 +30,16 @@ export const RepositoryInfo = styled.section`
         display: flex;
         align-items: center;
 
+        a {
+            text-decoration: none;
+            color: #3d3d4d;
+
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
         img {
             width : 120px;
             height: 120px;
